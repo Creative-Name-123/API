@@ -1,0 +1,15 @@
+import json
+import requests
+
+
+def jprint(obj):  # create a formatted string of the Python JSON object
+    text = json.dumps(obj, sort_keys=True, indent=4)
+    print(text)
+
+
+response = requests.get("https://v6.exchangerate-api.com/v6/b0e778c91251073d5377c8fe/latest/USD")
+print(response.status_code)
+# A 200 status code means everything went well, 404 means not found, 403 means access denied
+jprint(response.json())
+data = response.json()
+print(data)
